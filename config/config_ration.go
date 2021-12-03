@@ -33,7 +33,7 @@ func SetUpDatabaseConnection() *gorm.DB {
 	if err != nil {
 		log.Panic("数据库连接失败", err)
 	}
-	db.AutoMigrate(&entity.User{})
+	db.AutoMigrate(&entity.Resources{}, &entity.Tools{})
 	return db
 }
 
