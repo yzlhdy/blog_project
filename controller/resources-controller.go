@@ -4,6 +4,7 @@ import (
 	"blog_project/dto"
 	"blog_project/helper"
 	"blog_project/service"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -27,12 +28,14 @@ func NewResourceController(res service.ResourcesService) ResourcesController {
 }
 func (c *resourcesController) InsertResource(context *gin.Context) {
 	var userCreate dto.CreateResourceRequest
-	errDto := context.ShouldBindJSON(&userCreate)
-	if errDto != nil {
-		res := helper.BuildErrorResponse(401, "参数错误", helper.EmptyObj{}, errDto.Error())
-		context.AbortWithStatusJSON(http.StatusBadRequest, res)
-		return
-	}
+	// errDto := context.ShouldBindJSON(&userCreate)
+	fmt.Println(userCreate)
+	// if errDto != nil {
+	// 	res := helper.BuildErrorResponse(401, "参数错误", helper.EmptyObj{}, errDto.Error())
+	// 	log.Fatalln(res)
+	// 	context.AbortWithStatusJSON(http.StatusBadRequest, res)
+	// 	return
+	// }
 	u := c.resService.InsertResource(userCreate)
 	response := helper.BuildResponse(200, "success", u)
 	context.JSON(http.StatusOK, response)
