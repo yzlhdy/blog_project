@@ -25,9 +25,11 @@ func NewToolsController(toolSer service.ToolService) ToolsController {
 
 func (s *toolsController) InsertTools(ctx *gin.Context) {
 	var toolsCreate dto.CreateTools
-	if err := ctx.ShouldBindJSON(&toolsCreate); err != nil {
-		res := helper.BuildErrorResponse(401, "参数错误", helper.EmptyObj{}, err.Error())
-		ctx.AbortWithStatusJSON(http.StatusBadRequest, res)
+	ctx.ShouldBind(&toolsCreate)
+	valid, errs := helper.BindAndValid(ctx, &toolsCreate)
+	if !valid {
+		response := helper.BuildErrorResponse(401, "参数错误", helper.EmptyObj{}, errs)
+		ctx.JSON(http.StatusBadRequest, response)
 		return
 	}
 	res := s.toolSer.InsertTools(toolsCreate)

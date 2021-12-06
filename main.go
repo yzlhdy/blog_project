@@ -3,6 +3,7 @@ package main
 import (
 	"blog_project/config"
 	"blog_project/controller"
+	"blog_project/middleware"
 	"blog_project/repository"
 	"blog_project/service"
 
@@ -24,14 +25,18 @@ var (
 
 func main() {
 	defer config.CloseDatabase(db)
-	server := gin.Default()
+	server := gin.New()
 	server.Use(gin.Logger())
+	server.Use(gin.Recovery())
+	server.Use(middleware.Translations())
 
+	// resources
 	resources := server.Group("/api/v1")
 	{
 		resources.POST("/resources", resourController.InsertResource)
 		resources.POST("/resources/update", resourController.UpdateResource)
 	}
+	// tools
 	tools := server.Group("/api/v1")
 	{
 		tools.POST("/tools", toolsController.InsertTools)
