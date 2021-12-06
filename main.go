@@ -29,6 +29,7 @@ func main() {
 	server.Use(gin.Logger())
 	server.Use(gin.Recovery())
 	server.Use(middleware.Translations())
+	server.Use(middleware.Loggers())
 
 	// resources
 	resources := server.Group("/api/v1")

@@ -4,7 +4,7 @@ type CreateTools struct {
 	Title       string `json:"title" form:"title" binding:"required,min=3,max=10" `
 	Image       string `json:"image"  form:"image" binding:"required,min=3,max=10" `
 	SubTitle    string `json:"sub_title"  form:"sub_title" binding:"required,min=3,max=10" `
-	Url         string `json:"url" form:"url"  `
+	Url         string `json:"url" form:"url" binding:"required,min=3,max=10" `
 	ResourcesId uint   `json:"resources_id" form:"resources_id" binding:"required" `
 }
 
