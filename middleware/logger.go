@@ -27,7 +27,7 @@ func Loggers() gin.HandlerFunc {
 	logger.SetLevel(logrus.DebugLevel)
 	logf, _ := rotatelogs.New(
 		filePathText+"%Y%m%d%H%M.log",
-		rotatelogs.WithLinkName("/path/to/access_log"),
+
 		rotatelogs.WithMaxAge(7*24*time.Hour),
 		rotatelogs.WithRotationTime(24*time.Hour),
 		rotatelogs.WithLinkName(linkName),

@@ -1,3 +1,4 @@
 time="2021-12-06 13:09:18" level=info client_ip="::1" data_size=3761 hostname=DESKTOP-VL3JSDS method=GET path=/api/v1/tools spend_time="14 ms" status=200 user_agent=PostmanRuntime/7.28.4
 time="2021-12-06 13:11:07" level=info client_ip="::1" data_size=3761 hostname=DESKTOP-VL3JSDS method=GET path=/api/v1/tools spend_time="14 ms" status=200 user_agent=PostmanRuntime/7.28.4
 time="2021-12-06 13:11:32" level=info client_ip="::1" data_size=3761 hostname=DESKTOP-VL3JSDS method=GET path=/api/v1/tools spend_time="11 ms" status=200 user_agent=PostmanRuntime/7.28.4
+time="2021-12-06 13:24:14" level=warning client_ip="::1" data_size=181 hostname=DESKTOP-VL3JSDS method=POST path=/api/v1/tools spend_time="1 ms" status=400 user_agent=PostmanRuntime/7.28.4
